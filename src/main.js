@@ -6,23 +6,24 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { displayImage } from "./js/pixabay-api";
 import { renderImage } from "./js/render-functions";
 
-const form = document.querySelector(".form-js");
-const input = document.querySelector(".input-js");
-const button = document.querySelector(".btn-js");
+const formSearch = document.querySelector(".form-js");
+const inputSearch = document.querySelector(".input-js");
+const list = document.querySelector(".image-list");
 
-form.addEventListener('submit', function (e) {
+formSearch.addEventListener('submit', e => {
     e.preventDefault();
-    const inputValue = input.value.trim();
-    if (inputValue === ' ') return;
-});
-displayImage(inputValue)
-if (images.hits.length === 0) {
-    return iziToast.error({
-        message: "Sorry, there are no images matching your search query. Please try again!"
+    const inputValue = inputSearch.value.trim();
+    if (inputValue === '') {
+        list.innerHTML = ' ';
+    }
+    const array = displayImage(inputValue);
+    if (array.length !== 0) {
+        array.then(images => renderImage(images.hits));
+    }
+    array.catch(error => {
+        iziToast.error({
+            message: "Sorry, there are no images matching your search query. Please try again!"
+        });
     });
-    
-
-} else {
-    renderImage(images);
-}
-
+    e.target.reset();
+});

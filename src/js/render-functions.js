@@ -1,7 +1,7 @@
-const form = document.querySelector(".form-js");
-const input = document.querySelector(".input-js");
-const button = document.querySelector(".btn-js");
-const list = document.querySelector(".image-list")
+
+const formSearch = document.querySelector(".form-js");
+const inputSearch = document.querySelector(".input-js");
+const list = document.querySelector(".image-list");
 
 export function renderImage(images) {
     const markup = images.hits.map((image) => {
@@ -27,6 +27,6 @@ export function renderImage(images) {
             </li>
         </ul>
     </li>`;
-    }).json('\n');
+    }).join('');
     list.innerHTML = markup;
 }
