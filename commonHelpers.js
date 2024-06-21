@@ -1,23 +1,13 @@
-import{d as l}from"./assets/pixabay-api-a75a1163.js";import{i as m}from"./assets/vendor-8e8cd629.js";document.querySelector(".form-js");document.querySelector(".input-js");const r=document.querySelector(".image-list");function a(s){const e=s.hits.map(t=>`
+import{S as a,i as l}from"./assets/vendor-8c59ed88.js";(function(){const r=document.createElement("link").relList;if(r&&r.supports&&r.supports("modulepreload"))return;for(const e of document.querySelectorAll('link[rel="modulepreload"]'))t(e);new MutationObserver(e=>{for(const o of e)if(o.type==="childList")for(const n of o.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&t(n)}).observe(document,{childList:!0,subtree:!0});function i(e){const o={};return e.integrity&&(o.integrity=e.integrity),e.referrerPolicy&&(o.referrerPolicy=e.referrerPolicy),e.crossOrigin==="use-credentials"?o.credentials="include":e.crossOrigin==="anonymous"?o.credentials="omit":o.credentials="same-origin",o}function t(e){if(e.ep)return;e.ep=!0;const o=i(e);fetch(e.href,o)}})();document.querySelector(".form-js");document.querySelector(".input-js");document.querySelector(".image-list");function u(s){const r="https://pixabay.com",i="/api/",t=new URLSearchParams({key:"44419663-0e2c09df92781957132f7cc0f",q:s,image_type:"photo",orientation:"horizontal",safesearch:!0}),e=`${r}${i}?${t}`;return console.log(e),fetch(e).then(o=>o.json())}document.querySelector(".form-js");document.querySelector(".input-js");const m=document.querySelector(".image-list");function d(s){const r=s.map(t=>`
     <li class="images-item">
-        <img href=${t.largeImageURL} class="large-img-link" onclick="event.preventDefault()"><img class="small-img-link" src=${t.webformatURL} alt=${t.tags}></img></a>
-        <ul class="img-list">
-            <li class="img-list-item">
-                <p class="img-list-item-text">Likes</p>
-                <p class="img-list-item-amount">${t.likes}</p>
-            </li>
-            <li class="img-list-item">
-                <p class="img-list-item-text">Views</p>
-                <p class="img-list-item-amount">${t.views}</p>
-            </li>
-            <li class="img-list-item">
-                <p class="img-list-item-text">Comments</p>
-                <p class="img-list-item-amount">${t.comments}</p>
-            </li>
-            <li class="img-list-item">
-                <p class="img-list-item-text">Downloads</p>
-                <p class="img-list-item-amount">${t.downloads}</p>
-            </li>
-        </ul>
-    </li>`).join("");r.innerHTML=e}const n=document.querySelector(".form-js"),c=document.querySelector(".input-js"),o=document.querySelector(".image-list");n.addEventListener("submit",s=>{s.preventDefault();const e=c.value.trim();e===""&&(o.innerHTML=" ");const t=l(e);t.length!==0&&t.then(i=>a(i.hits)),t.catch(i=>{m.error({message:"Sorry, there are no images matching your search query. Please try again!"})}),s.target.reset()});
+    <a class="large-img-link" href="${t.largeImageURL}">
+    <img class="small-img-link" src="${t.webformatURL}" alt="${t.tags}"></img>
+    <div class="image-box">
+    <p class="img-list-item-text">Likes: ${t.likes}</p>
+    <p class="img-list-item-text">Views: ${t.views}</p>
+    <p class="img-list-item-text">Comments: ${t.comments}</p>
+    <p class="img-list-item-text">Downloads: ${t.downloads}</p>
+    </div>
+        </a>
+    </li>`).join("");m.innerHTML=r,new a(".image-list a",{captions:!0,captionsData:"alt",captionPosition:"bottom",captionDelay:250}).refresh()}const f=document.querySelector(".form-js"),p=document.querySelector(".input-js"),g=document.querySelector(".image-list"),c=document.querySelector(".loader");f.addEventListener("submit",s=>{s.preventDefault();const r=p.value.trim();r===""&&(g.innerHTML=" "),h(),u(r).then(t=>{t.hits.length!==0?d(t.hits):l.error({message:"Sorry, there are no images matching your search query. Please try again!",messageColor:"#fafafa",color:"#ef4040",position:"topRight"})}).catch(t=>t).finally(()=>{y(),s.target.reset()})});function h(){c.classList.remove("hidden")}function y(){c.classList.add("hidden")}
 //# sourceMappingURL=commonHelpers.js.map
