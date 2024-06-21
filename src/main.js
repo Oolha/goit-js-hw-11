@@ -36,7 +36,11 @@ formSearch.addEventListener('submit', e => {
         });
             }
     })
-        .catch(error => error)
+        .catch(error => {
+        iziToast.error({
+            message: "An error occurred while fetching images. Please try again later."
+        })
+        })
         .finally(() => {
         hideLoader();
         e.target.reset();
